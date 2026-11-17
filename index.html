@@ -10,24 +10,35 @@
             font-family: Arial, sans-serif;
             background-color: #f0f2f5;
             text-align: center;
-            padding: 50px 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #1877f2;
+            color: white;
+            padding: 30px;
+        }
+
+        main {
+            padding: 40px 20px;
         }
 
         h1 {
-            color: #2563eb;
+            font-size: 32px;
         }
 
         p {
-            color: #333333;
             font-size: 18px;
+            color: #333;
         }
 
         button {
-            background-color: #2563eb;
+            background-color: #1877f2;
             color: white;
-            border: none;
             padding: 12px 25px;
-            border-radius: 8px;
+            border: none;
+            border-radius: 6px;
             cursor: pointer;
         }
     </style>
@@ -35,15 +46,18 @@
 
 <body>
 
-    <h1>Olá, mundo!</h1>
+    <header>
+        <h1>Meu Primeiro Site</h1>
+        <p>Aprendendo a criar sites com GitHub!</p>
+    </header>
 
-    <p>Este é meu primeiro site!</p>
-
-    <p>Estou aprendendo programação com o GitHub.</p>
-
-    <button onclick="alert('Parabéns! Seu primeiro botão funciona!')">
-        Clique aqui
-    </button>
+    <main>
+        <h2>Seja bem-vindo!</h2>
+        <p>Este é meu primeiro projeto na internet.</p>
+        <button onclick="alert('Obrigado por visitar meu site!')">
+            Clique aqui
+        </button>
+    </main>
 
 </body>
 </html>
