@@ -149,7 +149,8 @@
 
     <h2>Últimas notícias</h2>
 
-    <section class="noticias">
+    <section class="noticias" id="lista-noticias">
+</section>
 
         <article class="card" id="politica">
             <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800"
@@ -192,5 +193,113 @@
     <p>Informação em primeiro lugar!</p>
 </footer>
 
-</body>
+<script>
+const noticias = [
+    {
+        titulo: "Novidades da política brasileira",
+        categoria: "POLÍTICA",
+        resumo: "Acompanhe os principais acontecimentos políticos.",
+        imagem: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800",
+        link: "noticia1.html"
+    },
+    {
+        titulo: "Economia e mercado financeiro",
+        categoria: "ECONOMIA",
+        resumo: "Informações sobre economia e finanças.",
+        imagem: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800",
+        link: "noticia1.html"
+    },
+    {
+        titulo: "Acontecimentos da nossa região",
+        categoria: "REGIÃO",
+        resumo: "Fique por dentro das notícias locais.",
+        imagem: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800",
+        link: "noticia1.html"
+    }
+];
+
+const lista = document.getElementById("lista-noticias");
+
+noticias.forEach(function(noticia) {
+
+    lista.innerHTML += `
+        <article class="card">
+
+            <img src="${noticia.imagem}" alt="${noticia.titulo}">
+
+            <p class="categoria">${noticia.categoria}</p>
+
+            <h3>${noticia.titulo}</h3>
+
+            <p>${noticia.resumo}</p>
+
+            <p>
+                <a href="${noticia.link}">
+                    Leia mais →
+                </a>
+            </p>
+
+        </article>
+    `;
+
+});
+</script>
+```
+
+**Atenção:** mantenha o código dentro da tag `<script>` e antes do fechamento do `body`.
+
+## Passo 4 — Salvar e testar
+
+1. Clique em Commit changes.
+2. Confirme o salvamento.
+3. Aguarde a atualização do GitHub Pages.
+4. Acesse seu site e pressione Ctrl + F5.
+
+Você deverá visualizar três notícias organizadas automaticamente.
+
+## Passo 5 — Aprender a adicionar notícias
+
+Aqui está a parte mais importante da aula.
+
+Para adicionar uma quarta notícia, você não precisa criar outro cartão HTML.
+
+Basta acrescentar outro bloco dentro da lista `noticias`, seguindo este modelo:
+
+```javascript
+{
+    titulo: "Minha quarta notícia",
+    categoria: "GERAL",
+    resumo: "Descrição da minha nova notícia.",
+    imagem: "LINK_DA_IMAGEM",
+    link: "noticia1.html"
+}
+```
+
+Cada bloco representa uma notícia.
+
+*Observação:* por enquanto, os links levam à mesma página de demonstração. Na próxima etapa vamos aprender a fazer cada notícia abrir seu próprio conteúdo.
+
+---
+
+## Teste de aprendizado
+
+{@body const [answer,setAnswer] = DIL.useState("")}
+<box border radius="lg" padding={3} gap={3}>
+  **Qual é a função do JavaScript que acabamos de utilizar?**
+
+  <radio-group direction="col" value={answer} onChange={setAnswer}>
+    <radio value="a">A) Apenas mudar a cor do site.</radio>
+    <radio value="b">B) Organizar os dados e criar os cartões de notícias automaticamente.</radio>
+    <radio value="c">C) Criar uma conta no GitHub.</radio>
+  </radio-group>
+  <button block disabled={!answer} onClick={()=>GenUI.issueNewTurn(answer==="b"?"Minha resposta é B. Vamos continuar!":`Minha resposta é ${answer.toUpperCase()}. Explique a resposta correta.`)}>Responder</button>
+</box>
+
+## Nosso próximo objetivo
+
+<badge color="info">MISSÃO 9</badge> — Criar páginas individuais automáticas para cada notícia.
+
+Vamos avançar para recursos mais profissionais, como um pequeno sistema de gerenciamento de notícias.
+
+**Uma coisa importante:** estamos aprendendo a construir o site de verdade, entendendo cada código, e não apenas copiando modelos. 💻</body>
 </html>
