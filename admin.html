@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f2f4;
+        }
+
+        header {
+            background: #102b50;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .painel {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        button {
+            background: #1877f2;
+            color: white;
+            border: none;
+            padding: 13px 20px;
+            margin-top: 20px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .noticia {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+        }
+
+        .excluir {
+            background: #d71920;
+            margin-left: 10px;
+        }
+
+        .aviso {
+            color: #555;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Painel Administrativo</h1>
+    <p>Portal de Notícias</p>
+</header>
+
+<div class="container">
+
+    <div class="painel">
+
+        <h2>Cadastrar notícia</h2>
+
+        <form id="form-noticia">
+
+            <label>Título da notícia</label>
+            <input type="text" id="titulo" required>
+
+            <label>Categoria</label>
+            <select id="categoria" required>
+                <option value="">Selecione</option>
+                <option value="POLÍTICA">Política</option>
+                <option value="ECONOMIA">Economia</option>
+                <option value="REGIÃO">Região</option>
+                <option value="GERAL">Geral</option>
+            </select>
+
+            <label>Resumo</label>
+            <textarea id="resumo" required></textarea>
+
+            <label>Endereço da imagem</label>
+            <input type="url" id="imagem"
+                   placeholder="https://exemplo.com/imagem.jpg"
+                   required>
+
+            <label>Conteúdo completo</label>
+            <textarea id="texto" required></textarea>
+
+            <button type="submit">Salvar notícia</button>
+
+        </form>
+
+        <p class="aviso" id="mensagem"></p>
+
+    </div>
+
+    <div class="painel" style="margin-top:25px;">
+
+        <h2>Notícias cadastradas neste navegador</h2>
+
+        <div id="lista"></div>
+
+    </div>
+
+    <p>
+        <a href="index.html">Voltar ao portal</a>
+    </p>
+
+</div>
+
+<script>
+
+const formulario = document.getElementById("form-noticia");
+const lista = document.getElementById("lista");
+const mensagem = document.getElementById("mensagem");
+
+let noticias = JSON.parse(
+    localStorage.getItem("minhasNoticias") || "[]"
+);
+
+function mostrarNoticias() {
+
+    lista.innerHTML = "";
+
+    if (noticias.length === 0) {
+        lista.textContent = "Nenhuma notícia cadastrada.";
+        return;
+    }
+
+    noticias.forEach(function(noticia, indice) {
+
+        const card = document.createElement("div");
+        card.className = "noticia";
+
+        const titulo = document.createElement("h3");
+        titulo.textContent = noticia.titulo;
+
+        const categoria = document.createElement("p");
+        categoria.textContent = noticia.categoria;
+
+        const resumo = document.createElement("p");
+        resumo.textContent = noticia.resumo;
+
+        const excluir = document.createElement("button");
+        excluir.className = "excluir";
+        excluir.textContent = "Excluir";
+
+        excluir.addEventListener("click", function() {
+
+            noticias.splice(indice, 1);
+
+            localStorage.setItem(
+                "minhasNoticias",
+                JSON.stringify(noticias)
+            );
+
+            mostrarNoticias();
+
+        });
+
+        card.appendChild(titulo);
+        card.appendChild(categoria);
+        card.appendChild(resumo);
+        card.appendChild(excluir);
+
+        lista.appendChild(card);
+
+    });
+}
+
+formulario.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const noticia = {
+        titulo: document.getElementById("titulo").value,
+        categoria: document.getElementById("categoria").value,
+        resumo: document.getElementById("resumo").value,
+        imagem: document.getElementById("imagem").value,
+        texto: document.getElementById("texto").value
+    };
+
+    noticias.push(noticia);
+
+    localStorage.setItem(
+        "minhasNoticias",
+        JSON.stringify(noticias)
+    );
+
+    formulario.reset();
+
+    mensagem.textContent = "Notícia salva com sucesso!";
+
+    mostrarNoticias();
+
+});
+
+mostrarNoticias();
+
+</script>
+
+</body>
+</html>
