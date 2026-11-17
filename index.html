@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Primeiro Site</title>
+
+    <title>Portal de Notícias</title>
 
     <style>
         * {
@@ -11,20 +12,25 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            background: #f0f2f5;
+            font-family: Arial, sans-serif;
+            background: #f1f2f4;
         }
 
         header {
-            background: #1877f2;
+            background: #102b50;
             color: white;
             padding: 25px;
             text-align: center;
         }
 
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
         nav {
-            background: #123b70;
+            background: #d71920;
             padding: 15px;
             text-align: center;
         }
@@ -32,79 +38,158 @@
         nav a {
             color: white;
             text-decoration: none;
-            margin: 15px;
+            margin: 12px;
             font-weight: bold;
         }
 
-        main {
-            max-width: 900px;
+        .container {
+            max-width: 1100px;
             margin: auto;
-            padding: 30px 20px;
-            text-align: center;
+            padding: 20px;
         }
 
-        .imagem {
-            width: 100%;
-            max-width: 600px;
-            border-radius: 12px;
-        }
-
-        section {
+        .destaque {
             background: white;
-            padding: 25px;
-            margin: 25px 0;
             border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .destaque img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        .conteudo {
+            padding: 20px;
+        }
+
+        .noticias {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            padding: 0 15px;
+        }
+
+        .card p {
+            padding: 0 15px 15px;
+            color: #555;
+        }
+
+        .categoria {
+            color: #d71920;
+            font-weight: bold;
+            font-size: 13px;
         }
 
         footer {
-            background: #123b70;
+            background: #102b50;
             color: white;
             text-align: center;
-            padding: 20px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 600px) {
+            .noticias {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 8px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>Meu Primeiro Site</h1>
-        <p>Meu espaço na internet!</p>
-    </header>
+<header>
+    <h1>PORTAL DE NOTÍCIAS</h1>
+    <p>Informação em primeiro lugar!</p>
+</header>
 
-    <nav>
-        <a href="#inicio">Início</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#contato">Contato</a>
-    </nav>
+<nav>
+    <a href="#">Início</a>
+    <a href="#politica">Política</a>
+    <a href="#economia">Economia</a>
+    <a href="#geral">Geral</a>
+</nav>
 
-    <main>
+<div class="container">
 
-        <section id="inicio">
-            <h2>Bem-vindo!</h2>
-            <p>Estou aprendendo a desenvolver sites!</p>
+    <section class="destaque">
+        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1200"
+             alt="Jornal e notícias">
 
-            <img
-                class="imagem"
-                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=900"
-                alt="Computador utilizado para programação">
-        </section>
+        <div class="conteudo">
+            <span class="categoria">DESTAQUE</span>
+            <h2>Bem-vindo ao nosso portal de notícias!</h2>
+            <p>Acompanhe informações, acontecimentos e novidades.</p>
+        </div>
+    </section>
 
-        <section id="sobre">
-            <h2>Sobre meu site</h2>
-            <p>Este é meu primeiro projeto desenvolvido com HTML e CSS.</p>
-        </section>
+    <h2>Últimas notícias</h2>
 
-        <section id="contato">
-            <h2>Contato</h2>
-            <p>Em breve teremos informações de contato!</p>
-        </section>
+    <section class="noticias">
 
-    </main>
+        <article class="card" id="politica">
+            <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800"
+                 alt="Política">
+            <h3>Política: acompanhe os principais acontecimentos</h3>
+            <p class="categoria">POLÍTICA</p>
+            <p>Espaço para publicar notícias sobre política.</p>
+        </article>
 
-    <footer>
-        <p>Meu Primeiro Site - 2026</p>
-    </footer>
+        <article class="card" id="economia">
+            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800"
+                 alt="Economia">
+            <h3>Economia: novidades e informações</h3>
+            <p class="categoria">ECONOMIA</p>
+            <p>Espaço para publicar notícias sobre economia.</p>
+        </article>
+
+        <article class="card" id="geral">
+            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800"
+                 alt="Notícias gerais">
+            <h3>Notícias gerais e acontecimentos</h3>
+            <p class="categoria">GERAL</p>
+            <p>Espaço para publicar notícias da região.</p>
+        </article>
+
+        <article class="card">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800"
+                 alt="Cidade">
+            <h3>Fique informado sobre sua cidade</h3>
+            <p class="categoria">REGIÃO</p>
+            <p>Espaço para informações locais.</p>
+        </article>
+
+    </section>
+
+</div>
+
+<footer>
+    <p>Portal de Notícias © 2026</p>
+    <p>Informação em primeiro lugar!</p>
+</footer>
 
 </body>
 </html>
