@@ -6,40 +6,61 @@
     <title>Meu Primeiro Site</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            text-align: center;
             margin: 0;
-            padding: 0;
+            background: #f0f2f5;
         }
 
         header {
-            background-color: #1877f2;
+            background: #1877f2;
             color: white;
-            padding: 30px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        nav {
+            background: #123b70;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 15px;
+            font-weight: bold;
         }
 
         main {
-            padding: 40px 20px;
+            max-width: 900px;
+            margin: auto;
+            padding: 30px 20px;
+            text-align: center;
         }
 
-        h1 {
-            font-size: 32px;
+        .imagem {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 12px;
         }
 
-        p {
-            font-size: 18px;
-            color: #333;
+        section {
+            background: white;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
         }
 
-        button {
-            background-color: #1877f2;
+        footer {
+            background: #123b70;
             color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
+            text-align: center;
+            padding: 20px;
         }
     </style>
 </head>
@@ -48,16 +69,42 @@
 
     <header>
         <h1>Meu Primeiro Site</h1>
-        <p>Aprendendo a criar sites com GitHub!</p>
+        <p>Meu espaço na internet!</p>
     </header>
 
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+    </nav>
+
     <main>
-        <h2>Seja bem-vindo!</h2>
-        <p>Este é meu primeiro projeto na internet.</p>
-        <button onclick="alert('Obrigado por visitar meu site!')">
-            Clique aqui
-        </button>
+
+        <section id="inicio">
+            <h2>Bem-vindo!</h2>
+            <p>Estou aprendendo a desenvolver sites!</p>
+
+            <img
+                class="imagem"
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=900"
+                alt="Computador utilizado para programação">
+        </section>
+
+        <section id="sobre">
+            <h2>Sobre meu site</h2>
+            <p>Este é meu primeiro projeto desenvolvido com HTML e CSS.</p>
+        </section>
+
+        <section id="contato">
+            <h2>Contato</h2>
+            <p>Em breve teremos informações de contato!</p>
+        </section>
+
     </main>
+
+    <footer>
+        <p>Meu Primeiro Site - 2026</p>
+    </footer>
 
 </body>
 </html>
