@@ -1,1 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Notícia | Portal de Notícias</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f2f4;
+            color: #222;
+        }
+
+        header {
+            background: #102b50;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        main {
+            max-width: 850px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 30px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .categoria {
+            color: #d71920;
+            font-weight: bold;
+        }
+
+        a {
+            color: #d71920;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h2>PORTAL DE NOTÍCIAS</h2>
+</header>
+
+<main>
+
+    <a href="index.html">← Voltar ao início</a>
+
+    <div id="conteudo-noticia"></div>
+
+</main>
+
+<script>
+
+const noticias = [
+    {
+        titulo: "Novidades da política brasileira",
+        categoria: "POLÍTICA",
+        resumo: "Acompanhe os principais acontecimentos políticos.",
+        imagem: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800",
+        texto: "Esta é a página completa da notícia de política. Aqui você poderá escrever todos os detalhes do acontecimento."
+    },
+
+    {
+        titulo: "Economia e mercado financeiro",
+        categoria: "ECONOMIA",
+        resumo: "Informações sobre economia e finanças.",
+        imagem: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800",
+        texto: "Esta é a página completa da notícia de economia. Aqui você poderá adicionar informações, explicações e atualizações."
+    },
+
+    {
+        titulo: "Acontecimentos da nossa região",
+        categoria: "REGIÃO",
+        resumo: "Fique por dentro das notícias locais.",
+        imagem: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800",
+        texto: "Esta é a página completa da notícia regional. Aqui você poderá publicar acontecimentos da sua cidade."
+    }
+];
+
+const parametros = new URLSearchParams(window.location.search);
+
+const id = Number(parametros.get("id"));
+
+const noticia = noticias[id];
+
+const conteudo = document.getElementById("conteudo-noticia");
+
+if (noticia) {
+
+    document.title = noticia.titulo + " | Portal de Notícias";
+
+    conteudo.innerHTML = `
+        <p class="categoria">${noticia.categoria}</p>
+
+        <h1>${noticia.titulo}</h1>
+
+        <img src="${noticia.imagem}" alt="${noticia.titulo}">
+
+        <p>${noticia.resumo}</p>
+
+        <p>${noticia.texto}</p>
+    `;
+
+} else {
+
+    conteudo.innerHTML = `
+        <h1>Notícia não encontrada</h1>
+        <p>Esta notícia não existe ou o endereço está incorreto.</p>
+    `;
+
+}
+
+</script>
 
